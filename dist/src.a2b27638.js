@@ -145,7 +145,7 @@ var formatPhone = function formatPhone(key, inp) {
     }
     return "".concat(pre || "").concat(mid || "").concat(post || "");
   }
-  return null;
+  return "";
 };
 module.exports = formatPhone;
 },{"./removeFormatting":"src/removeFormatting.js"}],"src/index.js":[function(require,module,exports) {
@@ -155,21 +155,16 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var _formatPhone = _interopRequireDefault(require("./formatPhone"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-_formatPhone.default = (require("./formatPhone"), function () {
-  throw new Error('"' + "formatPhone" + '" is read-only.');
-}());
+var formatPhone = require("./formatPhone");
 var phoneInputElement = document.getElementById("phone");
 var formatField = function formatField(event) {
   var key = event.data;
   var inp = event.target.value;
-  if (!isNaN(key)) phoneInputElement.value = (0, _formatPhone.default)(key, inp) || "";else phoneInputElement.value = inp.slice(0, inp.length - 1);
-  // console.log(`${pre || ""}${mid || ""}${post || ""}`);
+  console.log("hi");
+  if (!isNaN(key)) phoneInputElement.value = formatPhone(key, inp) || "";else phoneInputElement.value = inp.slice(0, inp.length - 1);
 };
-
 phoneInputElement.oninput = formatField;
-var _default = _formatPhone.default;
+var _default = formatPhone;
 exports.default = _default;
 },{"./formatPhone":"src/formatPhone.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
@@ -196,7 +191,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "35919" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33465" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
