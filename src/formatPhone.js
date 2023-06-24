@@ -18,7 +18,7 @@ const formatPhone = (key, inp) => {
     }
     return `${pre || ""}${mid || ""}${post || ""}`;
   }
-  return null;
+  return "";
 };
 
 module.exports = formatPhone;
