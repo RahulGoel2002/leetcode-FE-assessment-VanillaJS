@@ -16,5 +16,5 @@ test("Check 3: Check for (l > 6)", () => {
 });
 
 test("Check 4: Check for non-numeric key press", () => {
-  expect(formatPhone("p", "1234")).toBe(null);
+  expect(formatPhone("p", "1234")).toBe("");
 });
