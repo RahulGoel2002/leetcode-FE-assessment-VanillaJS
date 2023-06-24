@@ -160,7 +160,6 @@ var phoneInputElement = document.getElementById("phone");
 var formatField = function formatField(event) {
   var key = event.data;
   var inp = event.target.value;
-  console.log("hi");
   if (!isNaN(key)) phoneInputElement.value = formatPhone(key, inp) || "";else phoneInputElement.value = inp.slice(0, inp.length - 1);
 };
 phoneInputElement.oninput = formatField;
