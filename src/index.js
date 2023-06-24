@@ -5,7 +5,8 @@ const phoneInputElement = document.getElementById("phone");
 const formatField = (event) => {
   let key = event.data;
   let inp = event.target.value;
-  console.log("hi");
+  let caretPos = phoneInputElement.selectionStart;
+  console.log(caretPos);
   if (!isNaN(key)) phoneInputElement.value = formatPhone(key, inp) || "";
   else phoneInputElement.value = inp.slice(0, inp.length - 1);
 };

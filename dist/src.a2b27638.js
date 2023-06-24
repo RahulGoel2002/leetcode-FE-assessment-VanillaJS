@@ -160,7 +160,8 @@ var phoneInputElement = document.getElementById("phone");
 var formatField = function formatField(event) {
   var key = event.data;
   var inp = event.target.value;
-  console.log("hi");
+  var caretPos = phoneInputElement.selectionStart;
+  console.log(caretPos);
   if (!isNaN(key)) phoneInputElement.value = formatPhone(key, inp) || "";else phoneInputElement.value = inp.slice(0, inp.length - 1);
 };
 phoneInputElement.oninput = formatField;
@@ -191,7 +192,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "33465" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "36223" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
