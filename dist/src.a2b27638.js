@@ -156,16 +156,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 var formatPhone = require("./formatPhone");
+var removeFormatting = require("./removeFormatting");
 var phoneInputElement = document.getElementById("phone");
+var handleCaretJumping = function handleCaretJumping(inp) {
+  var curr_pos = phoneInputElement.selectionStart;
+};
 var formatField = function formatField(event) {
   var key = event.data;
   var inp = event.target.value;
+  var curr_pos = phoneInputElement.selectionStart;
+  if (inp.length === curr_pos) curr_pos += 5;
   if (!isNaN(key)) phoneInputElement.value = formatPhone(key, inp) || "";else phoneInputElement.value = inp.slice(0, inp.length - 1);
+  phoneInputElement.selectionStart = curr_pos;
+  phoneInputElement.selectionEnd = curr_pos;
 };
 phoneInputElement.oninput = formatField;
 var _default = formatPhone;
 exports.default = _default;
-},{"./formatPhone":"src/formatPhone.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./formatPhone":"src/formatPhone.js","./removeFormatting":"src/removeFormatting.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
