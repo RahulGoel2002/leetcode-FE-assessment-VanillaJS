@@ -12,7 +12,7 @@ const formatField = (event) => {
   let inp = event.target.value;
   var curr_pos = phoneInputElement.selectionStart;
 
-  if (inp.length === curr_pos) curr_pos += 5;
+  if (inp.length === curr_pos) curr_pos += inp.length;
 
   if (!isNaN(key)) phoneInputElement.value = formatPhone(key, inp) || "";
   else phoneInputElement.value = inp.slice(0, inp.length - 1);
