@@ -74,5 +74,40 @@ Add any required condition handling and write tests. I have used the jest testin
 
 ## Q2. Caret jump Handling
 My logic to implement this remains a simple one. At each change I record the caret position and after formatting is applied I return the caret to its original position. 
+For this I used the `selectionStart` property to get the caret's initial position.
+and after every update I set the `selectionStart` and `selectionEnd` property to the previous caret position like so.
+```js
+
+const formatField = (event) => {
+  let key = event.data;
+  let inp = event.target.value;
+  var curr_pos = phoneInputElement.selectionStart;
+
+  if (!isNaN(key)) phoneInputElement.value = formatPhone(key, inp) || "";
+  else phoneInputElement.value = inp.slice(0, inp.length - 1);
+  phoneInputElement.selectionStart = curr_pos;
+  phoneInputElement.selectionEnd = curr_pos;
+};
+```
+But this solution works fine for editing the digits but it creates some bugs while inputing the digits.
+Thus I add a final check that if the caret is at the end and user enters a number, the caret jumps to the end of the field. Which solved the problem.
+Here is the final code 
+```js
+
+const formatField = (event) => {
+  let key = event.data;
+  let inp = event.target.value;
+  var curr_pos = phoneInputElement.selectionStart;
+
+  if (inp.length === curr_pos) curr_pos += inp.length;
+
+  if (!isNaN(key)) phoneInputElement.value = formatPhone(key, inp) || "";
+  else phoneInputElement.value = inp.slice(0, inp.length - 1);
+  phoneInputElement.selectionStart = curr_pos;
+  phoneInputElement.selectionEnd = curr_pos;
+};
+```
+With this my Vanilla JS implementation was completed.
+Here are the test coverage results.
 
 
