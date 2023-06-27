@@ -108,6 +108,5 @@ const formatField = (event) => {
 };
 ```
 With this my Vanilla JS implementation was completed.
-Here are the test coverage results.
 
 
